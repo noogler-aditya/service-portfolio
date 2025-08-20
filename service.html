@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Kumar | Modern Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚫</text></svg>">
+
+    <style>
+        /* Custom styles to complement Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #E0E0E0; /* Light gray for text */
+        }
+        
+        /* Custom gradient for section headings */
+        .section-heading {
+            background: linear-gradient(to right, #7C88F8, #25C9B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom border color for cards and sections */
+        .border-custom {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Active nav link style */
+        .nav-link.active {
+            color: #7C88F8;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Mobile menu active icon */
+        #menu-toggle.active .fa-bars {
+            display: none;
+        }
+        #menu-toggle.active .fa-times {
+            display: block;
+        }
+        #menu-toggle .fa-times {
+            display: none;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-black text-neutral-300 antialiased">
+    <canvas id="bg-canvas"></canvas>
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-black/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-custom transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-indigo-400">Aditya Kumar</a>
+            
+            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center space-x-8">
+    <a href="#hero" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Home</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+    <a href="#services" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Services</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+    <a href="#education" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Background</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+    <a href="#case-studies" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Case Studies</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+    <a href="#skills" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Skills</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+    <a href="#contact" class="nav-link text-neutral-200 hover:text-indigo-400 transition duration-300 relative group">
+        <span>Contact</span>
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 transition-all duration-300 group-hover:w-full"></span>
+    </a>
+</nav>
+
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-2xl z-50">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+     <!-- Mobile Navigation -->
+<div id="mobile-menu" class="md:hidden hidden bg-black/95 absolute top-full left-0 w-full">
+    <nav class="flex flex-col items-center space-y-4 py-6">
+        <a href="#hero" class="nav-link text-lg text-neutral-200">Home</a>
+        <a href="#services" class="nav-link text-lg text-neutral-200">Services</a>
+        <a href="#case-studies" class="nav-link text-lg text-neutral-200">Case Studies</a>
+        <a href="#skills" class="nav-link text-lg text-neutral-200">Skills</a>
+        <a href="#contact" class="nav-link text-lg text-neutral-200">Contact</a>
+    </nav>
+</div>
+</header>
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center pt-24 md:pt-0 bg-gray-900/30">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
+                    <!-- Text Content -->
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+                            Hello, I'm Aditya
+                        </h1>
+                        <p class="text-lg md:text-xl text-neutral-400 mb-8 max-w-xl mx-auto md:mx-0">
+                            I help  build <strong class="text-teal-400 font-semibold">SEO-friendly</strong>, 
+                            <strong class="text-teal-400 font-semibold">scalable</strong>, and 
+                            <strong class="text-teal-400 font-semibold">visually modern websites</strong>.  
+                            Specialized in <strong class="text-teal-400 font-semibold">WordPress, React, and FastAPI</strong> 
+                            with expertise in <strong class="text-teal-400 font-semibold">data pipelines and cloud-native solutions</strong>.  
+                            Focused on delivering <strong class="text-teal-400 font-semibold">high-performance web platforms</strong> 
+                            that generate leads and strengthen brand presence.
+                        </p>
+                        <div class="flex justify-center md:justify-start gap-4">
+                            <a href="#case-studies" class="bg-indigo-500 text-white font-semibold py-3 px-8 rounded-lg hover:bg-indigo-600 transition-all duration-300 transform hover:scale-105">
+                                View Case Studies
+                            </a>
+                            <a href="mailto:adityaagrawal1528@gmail.com?subject=Project Inquiry" class="bg-transparent border-2 border-indigo-500 text-indigo-400 font-semibold py-3 px-8 rounded-lg hover:bg-indigo-500 hover:text-white transition-all duration-300 transform hover:scale-105">
+                                Request a Proposal
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Image -->
+                    <div class="md:w-1/3">
+                        <div class="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-indigo-500/50 shadow-lg">
+                            <a href="https://ibb.co/VWDxGN5x"><img src="https://i.ibb.co/gMwd87hd/97464-BA8-6253-4-FC2-A66-C-C4553-B73-E14-D-1-105-c.jpg" alt="Aditya Kumar Portrait" border="0"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+
+
+        <!-- Services Section -->
+<section id="services" class="py-20 md:py-28 bg-gray-900/30">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-heading">Services I Offer</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Service Card 1 -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-indigo-400 text-4xl mb-4 flex justify-center">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-3">Website Development</h3>
+          <p class="text-neutral-400 text-sm text-center">
+            Modern, responsive websites built with <strong class="text-teal-400">WordPress, React, and FastAPI</strong>, tailored to your business needs.
+          </p>
+        </div>
+        
+        <!-- Service Card 2 -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-green-400 text-4xl mb-4 flex justify-center">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-3">SEO & Optimization</h3>
+          <p class="text-neutral-400 text-sm text-center">
+            <strong class="text-teal-400">On-page SEO, performance tuning,</strong> and page speed optimization to improve visibility and generate leads.
+          </p>
+        </div>
+        
+        <!-- Service Card 3 -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-orange-400 text-4xl mb-4 flex justify-center">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-3">Data Pipelines & Automation</h3>
+          <p class="text-neutral-400 text-sm text-center">
+            Building <strong class="text-teal-400">ETL pipelines, automation workflows,</strong> and scalable data systems using PySpark and APIs.
+          </p>
+        </div>
+        
+        <!-- Service Card 4 -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom shadow-lg transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="text-blue-400 text-4xl mb-4 flex justify-center">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white text-center mb-3">Cloud Deployments</h3>
+          <p class="text-neutral-400 text-sm text-center">
+            Deploying and managing applications<strong class="text-teal-400"></strong> for reliable, scalable cloud solutions.
+          </p>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+        
+        
+
+        <!-- Education & Experience Section -->
+        <section id="education" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-heading">Background & Experience</h2>
+                <div class="relative max-w-2xl mx-auto">
+                    <!-- Timeline Line -->
+                    <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-gray-700"></div>
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative mb-12">
+                        <div class="absolute w-6 h-6 bg-indigo-500 rounded-full left-1/2 -translate-x-1/2 mt-1.5 border-4 border-gray-900"></div>
+                        <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                            <div class="bg-gray-900/50 p-6 rounded-lg border border-custom">
+                                <p class="text-indigo-400 font-semibold mb-1">Expected: March 2026</p>
+                                <h3 class="text-xl font-bold text-white mb-2">B.Tech, Computer Science</h3>
+                                <p class="text-neutral-400">CV Raman Global University, Bhubaneswar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                     <div class="relative mb-12">
+                        <div class="absolute w-6 h-6 bg-teal-500 rounded-full left-1/2 -translate-x-1/2 mt-1.5 border-4 border-gray-900"></div>
+                        <div class="w-full md:w-1/2 md:ml-auto md:pl-8">
+                            <div class="bg-gray-900/50 p-6 rounded-lg border border-custom">
+                                <p class="text-teal-400 font-semibold mb-1">Jun - Aug 2024</p>
+                                <h3 class="text-xl font-bold text-white mb-2">AI & ML Intern</h3>
+                                <p class="text-neutral-400">Edunet Foundation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative mb-12">
+                        <div class="absolute w-6 h-6 bg-teal-500 rounded-full left-1/2 -translate-x-1/2 mt-1.5 border-4 border-gray-900"></div>
+                        <div class="w-full md:w-1/2 md:pr-8 md:text-right">
+                            <div class="bg-gray-900/50 p-6 rounded-lg border border-custom">
+                                <p class="text-teal-400 font-semibold mb-1">Virtual Internship</p>
+                                <h3 class="text-xl font-bold text-white mb-2">Software Technology</h3>
+                                <p class="text-neutral-400">Deloitte</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+<section id="case-studies" class="py-20 md:py-28 bg-gray-900/30">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-heading">Case Studies / Work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  
+        <!-- Case Study Card 1 -->
+        <div class="bg-gray-900/50 rounded-lg overflow-hidden border border-custom flex flex-col group transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="h-56 overflow-hidden">
+            <img src="https://i.ibb.co/8DHBnfW3/Chat-GPT-Image-May-26-2025-at-05-59-16-PM.png" alt="Retail Insights Pipeline" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <h3 class="text-xl font-bold text-white mb-2">Retail Insights Pipeline</h3>
+            <p class="text-neutral-400 text-sm flex-grow mb-4">
+              <strong class="text-indigo-400" >Problem:</strong> Retailers lacked fast analytics.<br>
+              <strong class="text-teal-400" >Approach:</strong> Built PySpark + FastAPI pipeline.<br>
+              <strong class="text-orange-400" >Impact:</strong> Reduced query response time by 40% for analytics, enabling faster business decisions..
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-orange-500/20 text-orange-300 text-xs font-semibold px-3 py-1 rounded-full">PySpark</span>
+              <span class="bg-orange-500/20 text-orange-300 text-xs font-semibold px-3 py-1 rounded-full">FastAPI</span>
+              <span class="bg-orange-500/20 text-orange-300 text-xs font-semibold px-3 py-1 rounded-full">PostgreSQL</span>
+            </div>
+            <a href="https://github.com/noogler-aditya/retail-insights-pipeline" target="_blank" class="text-orange-400 font-semibold hover:underline">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+  
+        <!-- Case Study Card 2 -->
+        <div class="bg-gray-900/50 rounded-lg overflow-hidden border border-custom flex flex-col group transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="h-56 overflow-hidden">
+            <img src="https://i.ibb.co/yF0Yxg0V/Chat-GPT-Image-May-26-2025-at-05-39-39-PM.png" alt="AI Mock Interview Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <h3 class="text-xl font-bold text-white mb-2">AI Mock Interview Platform</h3>
+            <p class="text-neutral-400 text-sm flex-grow mb-4">
+              <strong class="text-indigo-400">Problem:</strong> Students lacked mock interview access.<br>
+              <strong class="text-teal-400">Approach:</strong> Built AI platform with React + Firebase.<br>
+              <strong class="text-orange-400">Impact:</strong> Helped students simulate real interviews,saving ~30% prep time.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full">React</span>
+              <span class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full">Firebase</span>
+              <span class="bg-indigo-500/20 text-indigo-300 text-xs font-semibold px-3 py-1 rounded-full">Gemini API</span>
+            </div>
+            <a href="https://github.com/noogler-aditya/AI-Mock-Interview-Application" target="_blank" class="text-indigo-400 font-semibold hover:underline">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+  
+        <!-- Case Study Card 3 -->
+        <div class="bg-gray-900/50 rounded-lg overflow-hidden border border-custom flex flex-col group transform hover:-translate-y-2 transition-transform duration-300">
+          <div class="h-56 overflow-hidden">
+            <img src="https://i.ibb.co/GQBnc21z/Chat-GPT-Image-May-26-2025-at-05-55-19-PM.png" alt="Smart File Categorization" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="p-6 flex-grow flex flex-col">
+            <h3 class="text-xl font-bold text-white mb-2">Smart File Categorization</h3>
+            <p class="text-neutral-400 text-sm flex-grow mb-4">
+              <strong class ="text-indigo-400">Problem:</strong> Manual file sorting was inefficient.<br>
+              <strong class="text-teal-400">Approach:</strong> Built auto-categorizer with C++ & Qt.<br>
+              <strong class="text-orange-400">Impact:</strong> Reduced workflow effort, faster access.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full">C++</span>
+              <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full">Qt Framework</span>
+              <span class="bg-teal-500/20 text-teal-300 text-xs font-semibold px-3 py-1 rounded-full">OOPs</span>
+            </div>
+            <a href="https://github.com/noogler-aditya/Smart-File-Categorization-and-Organization-System" target="_blank" class="text-teal-400 font-semibold hover:underline">View on GitHub <i class="fas fa-arrow-right ml-1"></i></a>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+        <!-- Skills Section -->
+<section id="skills" class="py-20 md:py-28">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-heading">My Expertise</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+  
+        <!-- Web & App Development -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fas fa-code text-indigo-400"></i>Web & App Development
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-center"><i class="fab fa-wordpress text-indigo-400 w-6"></i> WordPress (Custom themes, plugins)</li>
+            <li class="flex items-center"><i class="fab fa-react text-indigo-400 w-6"></i> React (SPA, dashboards)</li>
+            <li class="flex items-center"><i class="fas fa-server text-indigo-400 w-6"></i> FastAPI (Backend APIs)</li>
+            <li class="flex items-center"><i class="fas fa-database text-indigo-400 w-6"></i> PostgreSQL, Firebase</li>
+          </ul>
+        </div>
+  
+        <!-- Data & Cloud -->
+        <div class="bg-gray-900/50 p-8 rounded-lg border border-custom">
+          <h3 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+            <i class="fas fa-cloud text-teal-400"></i>Data & Cloud
+          </h3>
+          <ul class="space-y-4">
+            <li class="flex items-center"><i class="fas fa-database text-teal-400 w-6"></i> ETL Pipelines with PySpark</li>
+            <li class="flex items-center"><i class="fas fa-cogs text-teal-400 w-6"></i> Automation & APIs</li>
+            <li class="flex items-center"><i class="fab fa-aws text-teal-400 w-6"></i> AWS & Azure (Deployments)</li>
+            <li class="flex items-center"><i class="fas fa-chart-line text-teal-400 w-6"></i> SEO & Performance Optimization</li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+    <!-- Footer & Contact -->
+    <footer id="contact" class="bg-gray-900/30 py-16">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">Let’s Build Something Together</h2>
+          <p class="text-neutral-400 mb-8 max-w-lg mx-auto">
+            Have a project idea or need a modern, scalable website? Reach out and let’s turn your vision into reality.
+          </p>
+          <div class="flex justify-center items-center space-x-6 mb-8">
+            <a href="mailto:adityaagrawal1528@gmail.com?subject=Project Inquiry" 
+               class="text-neutral-400 hover:text-indigo-400 text-2xl transition-colors duration-300">
+               <i class="fas fa-envelope"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/aditya-kumar-a03237243/" target="_blank" 
+               class="text-neutral-400 hover:text-indigo-400 text-2xl transition-colors duration-300">
+               <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/noogler-aditya" target="_blank" 
+               class="text-neutral-400 hover:text-indigo-400 text-2xl transition-colors duration-300">
+               <i class="fab fa-github"></i>
+            </a>
+            <!-- Replace LeetCode with Portfolio or Calendly -->
+            <a href="#services" class="text-neutral-400 hover:text-indigo-400 text-2xl transition-colors duration-300">
+              <i class="fas fa-briefcase"></i>
+            </a>
+          </div>
+          <p class="text-neutral-500 text-sm">
+            &copy; <span id="currentYear"></span> Aditya Kumar. All rights reserved.
+          </p>
+        </div>
+      </footer>
+      
+
+    <script type="module">
+        import * as THREE from 'https://cdn.skypack.dev/three@0.132.2';
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+        const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg-canvas'), alpha: true });
+        renderer.setSize( window.innerWidth, window.innerHeight );
+
+        const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+        const material = new THREE.MeshStandardMaterial( { color: 0x7C88F8 } );
+        const torus = new THREE.Mesh( geometry, material );
+        scene.add( torus );
+
+        const pointLight = new THREE.PointLight(0xffffff)
+        pointLight.position.set(5,5,5)
+
+        const ambientLight = new THREE.AmbientLight(0xffffff)
+        scene.add(pointLight, ambientLight)
+
+        function animate() {
+            requestAnimationFrame( animate );
+
+            torus.rotation.x += 0.01;
+            torus.rotation.y += 0.005;
+            torus.rotation.z += 0.01;
+
+            renderer.render( scene, camera );
+        }
+
+        animate();
+    </script>
+
+</body>
+</html>
