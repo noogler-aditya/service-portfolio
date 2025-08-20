@@ -444,6 +444,15 @@
 
         animate();
     </script>
+ <script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active"); // switches bars <-> times
+    mobileMenu.classList.toggle("hidden"); // shows/hides menu
+  });
+</script>
 
 </body>
 </html>
